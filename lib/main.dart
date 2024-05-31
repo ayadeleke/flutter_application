@@ -114,6 +114,11 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 24),
             ),
             ),
+           Icon(
+                Icons.favorite,
+                color: Colors.red,
+               size: 24,
+) 
       // Menu  Items
       drawer: Drawer(
         child: ListView(
