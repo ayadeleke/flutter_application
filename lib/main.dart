@@ -41,6 +41,26 @@ class _HomePageState extends State<HomePage> {
       'location': 'New York, NY',
       'image': 'https://via.placeholder.com/150'
     },
+    {
+      'name': 'Marina Condo',
+      'location': 'Washington DC',
+      'image': 'https://via.placeholder.com/150'
+    },
+    {
+      'name': 'Home with Pool',
+      'location': 'Minneapolis, MN',
+      'image': 'https://via.placeholder.com/150'
+    },
+    {
+      'name': 'Beach House',
+      'location': 'Ontonio, TX',
+      'image': 'https://via.placeholder.com/150'
+    },
+    {
+      'name': 'Home kind',
+      'location': 'London, UK',
+      'image': 'https://via.placeholder.com/150'
+    },
     //more properties
   ];
 
