@@ -107,6 +107,13 @@ class _HomePageState extends State<HomePage> {
            label: Text('Tag'),
             backgroundColor: Colors.blue,
           ),
+      FittedBox(
+              fit: BoxFit.contain,
+              child: Text(
+              'Hello, FittedBox!',
+              style: TextStyle(fontSize: 24),
+            ),
+            ),
       // Menu  Items
       drawer: Drawer(
         child: ListView(
