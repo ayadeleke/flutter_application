@@ -103,6 +103,10 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
+      Chip(
+           label: Text('Tag'),
+            backgroundColor: Colors.blue,
+          ),
       // Menu  Items
       drawer: Drawer(
         child: ListView(
