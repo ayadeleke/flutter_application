@@ -103,10 +103,53 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
+         
       Chip(
            label: Text('Tag'),
             backgroundColor: Colors.blue,
           ),
+
+      
+      // Container widget
+      Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Container Widget Example'),
+      ),
+      body: Center(
+        child: Container(
+          width: 200,
+          height: 200,
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.blueAccent,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                offset: Offset(4, 4),
+                blurRadius: 5,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              'Hello, Flutter!',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+      // Container widget end
+
+
       FittedBox(
               fit: BoxFit.contain,
               child: Text(
@@ -114,11 +157,6 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 24),
             ),
             ),
-           Icon(
-                Icons.favorite,
-                color: Colors.red,
-               size: 24,
-) 
       // Menu  Items
       drawer: Drawer(
         child: ListView(
