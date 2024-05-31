@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'name': 'Beach House',
-      'location': 'Ontonio, TX',
+      'location': 'Ontario, TX',
       'image': 'https://via.placeholder.com/150'
     },
     {
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       'location': 'London, UK',
       'image': 'https://via.placeholder.com/150'
     },
-    //more properties
+    // More properties
   ];
 
   @override
@@ -85,37 +85,23 @@ class _HomePageState extends State<HomePage> {
           var property = properties[index];
           return Card(
             child: ListTile(
-              leading: Image.network(property['image']), // image URL
+              leading: Image.network(property['image']),
               title: Text(property['name']),
               subtitle: Text(property['location']),
             ),
           );
         },
       ),
-
-      // Floating action button
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // ignore: avoid_print
-          print('Add button pressed');
-        },
+        // ignore: avoid_print
+        onPressed: () => print('Add button pressed'),
         child: const Icon(Icons.add),
       ),
-      // Bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         onTap: (int index) {
           if (index == 1) {
@@ -123,77 +109,16 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
-         
-      Chip(
-           label: Text('Tag'),
-            backgroundColor: Colors.blue,
-          ),
-
-      
-      // Container widget
-      Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Container Widget Example'),
-      ),
-      body: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          padding: EdgeInsets.all(20),
-          margin: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.blueAccent,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                offset: Offset(4, 4),
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              'Hello, Flutter!',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-      // Container widget end
-
-
-      FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-              'Hello, FittedBox!',
-              style: TextStyle(fontSize: 24),
-            ),
-            ),
-      // Menu  Items
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: const <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+              decoration: BoxDecoration(color: Colors.blue),
               child: Text('Menu'),
             ),
-            ListTile(
-              title: Text('Item 1'),
-            ),
-            ListTile(
-              title: Text('Item 2'),
-            ),
+            ListTile(title: Text('Item 1')),
+            ListTile(title: Text('Item 2')),
           ],
         ),
       ),
@@ -216,7 +141,8 @@ class PropertySearch extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        icon: Icon(Icons.arrow_back), onPressed: () => close(context, ''));
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => close(context, ''));
   }
 
   @override
@@ -224,7 +150,6 @@ class PropertySearch extends SearchDelegate<String> {
     final results = properties
         .where((p) => p['name'].toLowerCase().contains(query.toLowerCase()))
         .toList();
-
     return ListView.builder(
       itemCount: results.length,
       itemBuilder: (context, index) {
@@ -243,7 +168,6 @@ class PropertySearch extends SearchDelegate<String> {
     final suggestions = properties
         .where((p) => p['name'].toLowerCase().startsWith(query.toLowerCase()))
         .toList();
-
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (context, index) {
