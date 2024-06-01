@@ -1,35 +1,16 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/bottom_navigation_bar_widget.dart';
+import 'main_layout.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PropertiesPage extends StatefulWidget {
+  const PropertiesPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Airbnb Update',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const HomePage(),
-    );
-  }
+  // ignore: library_private_types_in_public_api
+  _PropertiesPageState createState() => _PropertiesPageState();
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class _PropertiesPageState extends State<PropertiesPage> {
   final List<Map> properties = [
     {
       'name': 'Beachside Condo',
@@ -61,7 +42,6 @@ class _HomePageState extends State<HomePage> {
       'location': 'London, UK',
       'image': 'https://via.placeholder.com/150'
     },
-    // More properties
   ];
 
   @override
@@ -74,7 +54,9 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.search),
             onPressed: () {
               showSearch(
-                  context: context, delegate: PropertySearch(properties));
+                context: context,
+                delegate: PropertySearch(properties),
+              );
             },
           ),
         ],
@@ -92,35 +74,14 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        // ignore: avoid_print
-        onPressed: () => print('Add button pressed'),
-        child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        onTap: (int index) {
-          if (index == 1) {
-            showSearch(context: context, delegate: PropertySearch(properties));
-          }
+      bottomNavigationBar: BottomNavigationBarWidget(
+        currentIndex: 1,
+        onTap: (index) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+                builder: (context) => MainLayout(initialIndex: index)),
+          );
         },
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text('Menu'),
-            ),
-            ListTile(title: Text('Item 1')),
-            ListTile(title: Text('Item 2')),
-          ],
-        ),
       ),
     );
   }
@@ -141,8 +102,9 @@ class PropertySearch extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () => close(context, ''));
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () => close(context, ''),
+    );
   }
 
   @override
